@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>~/portfolio Suman Kalyan Sahoo</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Fira+Code:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- TITLE BAR -->
+  <div class="title-bar">
+    <div class="window-controls">
+      <div class="dot dot-red"></div>
+      <div class="dot dot-yellow"></div>
+      <div class="dot dot-green"></div>
+    </div>
+    <div class="tabs" id="editorTabs">
+      <div class="tab active" data-section="welcome" onclick="switchTab(this,'welcome')">
+        <span class="tab-icon">🏠</span> welcome.sh <span class="tab-close">×</span>
+      </div>
+      <div class="tab" data-section="about" onclick="switchTab(this,'about')">
+        <span class="tab-icon ft-ext-js">📄</span> about.js <span class="tab-close">×</span>
+      </div>
+      <div class="tab" data-section="projects" onclick="switchTab(this,'projects')">
+        <span class="tab-icon ft-ext-json">📦</span> projects.json <span class="tab-close">×</span>
+      </div>
+      <div class="tab" data-section="contact" onclick="switchTab(this,'contact')">
+        <span class="tab-icon ft-ext-md">📬</span> contact.md <span class="tab-close">×</span>
+      </div>
+    </div>
+    <div class="title-center">~/portfolio — terminal</div>
+  </div>
+
+  <!-- BODY -->
+  <div class="ide-body">
+
+    <!-- SIDEBAR ICONS -->
+    <div class="sidebar">
+      <div class="sb-icon active" title="Explorer">📁</div>
+      <div class="sb-icon" title="Search">🔍</div>
+      <div class="sb-icon" title="Git">⎇</div>
+      <div class="sb-icon" title="Extensions">🧩</div>
+      <div class="sb-spacer"></div>
+      <div class="sb-icon" title="Settings">⚙️</div>
+    </div>
+
+    <!-- FILE TREE -->
+    <div class="file-tree">
+      <div class="ft-header">Explorer</div>
+      <div class="ft-section">
+        <div class="ft-folder">▾ 📁 PORTFOLIO</div>
+        <div class="ft-file active" onclick="runCommand('open about')" data-section="about">
+          <span class="ft-ext-js">⬡</span> about.js
+        </div>
+        <div class="ft-file" onclick="runCommand('open projects')" data-section="projects">
+          <span class="ft-ext-json">{}</span> projects.json
+        </div>
+        <div class="ft-file" onclick="runCommand('open contact')" data-section="contact">
+          <span class="ft-ext-md">M</span> contact.md
+        </div>
+        <div class="ft-file" onclick="runCommand('open welcome')" data-section="welcome">
+          <span class="ft-ext-sh">$</span> welcome.sh
+        </div>
+        <div class="ft-folder" style="margin-top:6px;">▾ 📁 config</div>
+        <div class="ft-file">
+          <span class="ft-ext-json">{}</span> package.json
+        </div>
+        <div class="ft-file">
+          <span class="ft-ext-txt">·</span> .gitignore
+        </div>
+        <div class="ft-file">
+          <span class="ft-ext-md">M</span> README.md
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN PANEL -->
+    <div class="main-panel">
+
+      <!-- EDITOR -->
+      <div class="editor-area">
+        <div class="line-numbers" id="lineNums"></div>
+        <div class="code-content" id="codeContent">
+
+          <!-- WELCOME -->
+          <div class="section-block visible" id="sec-welcome">
+            <div class="welcome-art">
+              <pre class="ascii-art">
+██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗    ██╗
+██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝    ██║
+██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗      ██║
+██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝      ╚═╝
+╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗    ██╗
+ ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝    ╚═╝</pre>
+              <div class="welcome-title">Hey, I'm Suman Kalyan Sahoo 👨‍💻</div>
+              <div class="welcome-sub">Full-Stack Developer · Data Stucture Enthusiast · Coffee Addict<br>Type a command
+                in the terminal below to explore my portfolio.</div>
+              <div class="cmd-hints">
+                <div class="cmd-hint" onclick="runCommand('open about')"><span class="cmd-keyword">open</span> <span
+                    class="cmd-arg">about</span></div>
+                <div class="cmd-hint" onclick="runCommand('open projects')"><span class="cmd-keyword">open</span> <span
+                    class="cmd-arg">projects</span></div>
+                <div class="cmd-hint" onclick="runCommand('open contact')"><span class="cmd-keyword">open</span> <span
+                    class="cmd-arg">contact</span></div>
+                <div class="cmd-hint" onclick="runCommand('help')"><span class="cmd-keyword">help</span></div>
+                <div class="cmd-hint" onclick="runCommand('ls')"><span class="cmd-keyword">ls</span></div>
+                <div class="cmd-hint" onclick="runCommand('whoami')"><span class="cmd-keyword">whoami</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ABOUT -->
+          <div class="section-block" id="sec-about">
+            <pre><span class="cmt">// about.js — Personal information module</span>
+<span class="cmt">// Last modified: 2025-03-15</span>
+
+<span class="kw">const</span> <span class="var">developer</span> <span class="punc">=</span> <span class="punc">{</span></pre>
+            <br>
+            <div class="s-section" style="padding-left:24px;">
+              <div class="s-tag">$ cat about.js | parse</div>
+              <div class="s-name">Suman Kalyan Sahoo</div>
+              <div class="s-role">&#x276F; Full-Stack Developer &amp; UI Engineer</div>
+              <div class="s-bio">
+                I'm a developer who loves crafting beautiful, performant web experiences. With 5+ years in the industry,
+                I specialize in building scalable applications that feel delightful to use.<br><br>
+                Currently working on open-source developer tools and contributing to the React ecosystem. When I'm not
+                coding, I'm exploring hiking trails or experimenting with generative art.
+              </div>
+              <div class="s-skills">
+                <span class="skill-badge">TypeScript</span>
+                <span class="skill-badge">React</span>
+                <span class="skill-badge">Node.js</span>
+                <span class="skill-badge">Rust</span>
+                <span class="skill-badge">PostgreSQL</span>
+                <span class="skill-badge">Docker</span>
+                <span class="skill-badge">AWS</span>
+                <span class="skill-badge">GraphQL</span>
+                <span class="skill-badge">Next.js</span>
+                <span class="skill-badge">Tailwind</span>
+              </div>
+            </div>
+            <br>
+            <pre>  <span class="prop">name</span><span class="punc">:</span> <span class="str">"Suman Kalyan Sahoo"</span><span class="punc">,</span>
+  <span class="prop">role</span><span class="punc">:</span> <span class="str">"Full-Stack Developer"</span><span class="punc">,</span>
+  <span class="prop">location</span><span class="punc">:</span> <span class="str">"San Francisco, CA"</span><span class="punc">,</span>
+  <span class="prop">experience</span><span class="punc">:</span> <span class="num">5</span><span class="punc">,</span>
+  <span class="prop">available</span><span class="punc">:</span> <span class="kw">true</span><span class="punc">,</span>
+  <span class="prop">skills</span><span class="punc">:</span> <span class="punc">[</span><span class="str">"TypeScript"</span><span class="punc">,</span> <span class="str">"React"</span><span class="punc">,</span> <span class="str">"Node.js"</span><span class="punc">,</span> <span class="str">"Rust"</span><span class="punc">]</span><span class="punc">,</span>
+  <span class="prop">coffee</span><span class="punc">:</span> <span class="str">"daily ☕"</span>
+<span class="punc">};</span>
+
+<span class="kw">export default</span> <span class="var">developer</span><span class="punc">;</span></pre>
+          </div>
+
+          <!-- PROJECTS -->
+          <div class="section-block" id="sec-projects">
+            <pre><span class="punc">{</span>
+  <span class="prop">"projects"</span><span class="punc">:</span> <span class="punc">[</span></pre>
+            <div class="s-section" style="padding-left:16px; margin-top:16px;">
+              <div class="s-tag">$ cat projects.json | jq '.projects[]'</div>
+              <div class="projects-grid">
+                <div class="project-card">
+                  <div class="project-header">
+                    <div class="project-name">⬡ devterm-ui</div>
+                    <div class="project-links">
+                      <span class="project-link">★ 2.4k</span>
+                      <span class="project-link">GitHub →</span>
+                      <span class="project-link">Live ↗</span>
+                    </div>
+                  </div>
+                  <div class="project-desc">A terminal-inspired component library for React. Build UIs that feel like a
+                    developer's dream — syntax highlighted, keyboard-first, and blazing fast.</div>
+                  <div class="project-tags">
+                    <span class="project-tag">TypeScript</span>
+                    <span class="project-tag">React</span>
+                    <span class="project-tag">Rollup</span>
+                    <span class="project-tag">Storybook</span>
+                  </div>
+                </div>
+                <div class="project-card">
+                  <div class="project-header">
+                    <div class="project-name">⬡ rustql</div>
+                    <div class="project-links">
+                      <span class="project-link">★ 890</span>
+                      <span class="project-link">GitHub →</span>
+                    </div>
+                  </div>
+                  <div class="project-desc">A blazing-fast GraphQL query planner written in Rust. Reduces query latency
+                    by up to 40% through intelligent batching and caching strategies.</div>
+                  <div class="project-tags">
+                    <span class="project-tag">Rust</span>
+                    <span class="project-tag">GraphQL</span>
+                    <span class="project-tag">WASM</span>
+                  </div>
+                </div>
+                <div class="project-card">
+                  <div class="project-header">
+                    <div class="project-name">⬡ codeflow</div>
+                    <div class="project-links">
+                      <span class="project-link">★ 1.1k</span>
+                      <span class="project-link">GitHub →</span>
+                      <span class="project-link">Live ↗</span>
+                    </div>
+                  </div>
+                  <div class="project-desc">AI-assisted code review tool that integrates directly into your GitHub
+                    workflow. Catches bugs before they ship and suggests idiomatic improvements.</div>
+                  <div class="project-tags">
+                    <span class="project-tag">Next.js</span>
+                    <span class="project-tag">OpenAI API</span>
+                    <span class="project-tag">PostgreSQL</span>
+                    <span class="project-tag">GitHub API</span>
+                  </div>
+                </div>
+                <div class="project-card">
+                  <div class="project-header">
+                    <div class="project-name">⬡ dotfiles</div>
+                    <div class="project-links">
+                      <span class="project-link">★ 320</span>
+                      <span class="project-link">GitHub →</span>
+                    </div>
+                  </div>
+                  <div class="project-desc">My battle-tested dotfiles — zsh, neovim, tmux configs optimized for a smooth
+                    developer experience. Used by hundreds of devs worldwide.</div>
+                  <div class="project-tags">
+                    <span class="project-tag">Shell</span>
+                    <span class="project-tag">Lua</span>
+                    <span class="project-tag">Neovim</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <pre>  <span class="punc">]</span>
+<span class="punc">}</span></pre>
+          </div>
+
+          <!-- CONTACT -->
+          <div class="section-block" id="sec-contact">
+            <pre><span class="cmt"># contact.md</span>
+<span class="cmt">## Let's Build Something Together</span>
+<span class="cmt">> Open to freelance, full-time roles, and collabs</span>
+</pre>
+            <div class="s-section" style="padding-left:16px; margin-top:16px;">
+              <div class="s-tag">$ cat contact.md | render</div>
+              <div class="contact-grid">
+                <div class="contact-item" onclick="handleContact('email')">
+                  <div class="contact-icon">📧</div>
+                  <div class="contact-info">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">sumankalsahoo@gmail.com</div>
+                  </div>
+                  <div class="contact-arrow">→</div>
+                </div>
+                <div class="contact-item" onclick="handleContact('github')">
+                  <div class="contact-icon">⬡</div>
+                  <div class="contact-info">
+                    <div class="contact-label">GitHub</div>
+                    <div class="contact-value">github.com/sumankalyansahoo</div>
+                  </div>
+                  <div class="contact-arrow">→</div>
+                </div>
+                <!-- <div class="contact-item" onclick="handleContact('twitter')">
+                  <div class="contact-icon">𝕏</div>
+                  <div class="contact-info">
+                    <div class="contact-label">Twitter / X</div>
+                    <div class="contact-value">@suman_codes</div>
+                  </div>
+                  <div class="contact-arrow">→</div>
+                </div> -->
+                <a href="https://www.linkedin.com/in/suman-kalyan-sahoo-824292232/" target="_blank" rel="noopener noreferrer">
+                  <div class="contact-item" onclick="handleContact('linkedin')">
+                  
+                  <div class="contact-icon">in</div>
+                  <div class="contact-info">
+                    <div class="contact-label">LinkedIn</div>
+                    <div class="contact-value">linkedin.com/in/sumankalyansahoo</div>
+                  </div>
+                  <div class="contact-arrow">→</div>
+                </div>
+
+
+
+                </a>
+                
+              </div>
+            </div>
+            <pre>
+<span class="cmt">---</span>
+<span class="cmt">*Response time: usually within 24 hours*</span></pre>
+          </div>
+
+        </div><!-- /code-content -->
+      </div><!-- /editor-area -->
+
+      <!-- TERMINAL -->
+      <div class="terminal-panel">
+        <div class="term-tabs">
+          <div class="term-tab active"><span class="term-dot-green">●</span> bash</div>
+          <div class="term-tab">zsh</div>
+          <div class="term-tab">+ new</div>
+          <div class="term-actions">
+            <button class="term-btn" onclick="clearTerminal()">clear</button>
+            <button class="term-btn" onclick="runCommand('help')">help</button>
+          </div>
+        </div>
+        <div class="term-output" id="termOutput"></div>
+        <div class="term-input-row">
+          <span class="term-prompt-label">
+            <span class="prompt">suman</span><span class="prompt-sym">@</span><span class="prompt">devterm</span><span
+              class="prompt-sym">:</span><span class="prompt-path">~/portfolio</span><span class="prompt-git">
+              (main)</span><span class="prompt-sym"> $ </span>
+          </span>
+          <input class="term-input" id="termInput" type="text" autocomplete="off" spellcheck="false"
+            placeholder="type a command..." autofocus />
+          <span class="term-cursor"></span>
+        </div>
+      </div>
+
+      <!-- STATUS BAR -->
+      <div class="status-bar">
+        <div class="sb-left">
+          <span class="sb-item">⎇ main</span>
+          <span class="sb-sep">|</span>
+          <span class="sb-item" id="sb-file">welcome.sh</span>
+          <span class="sb-sep">|</span>
+          <span class="sb-item">Ln 1, Col 1</span>
+        </div>
+        <div class="sb-right">
+          <span class="sb-item">UTF-8</span>
+          <span class="sb-sep">|</span>
+          <span class="sb-item">Bash</span>
+          <span class="sb-sep">|</span>
+          <span class="sb-item">🟢 Ready</span>
+        </div>
+      </div>
+
+    </div><!-- /main-panel -->
+  </div><!-- /ide-body -->
+
+  <script src="script.js">
+
+  </script>
+</body>
+
+</html>
